@@ -1,0 +1,90 @@
+.om-aurora {
+  --om-aurora-invert: invert(0);
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .om-aurora-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    inset: 0;
+    pointer-events: none;
+
+    .om-aurora-lights {
+      pointer-events: none;
+      position: absolute;
+      background-image: var(--dark-gradient), var(--aurora);
+      will-change: transform;
+      opacity: 0.5;
+      inset: -10px;
+
+      filter: blur(10px) var(--om-aurora-invert);
+
+      -webkit-mask-image: radial-gradient(
+        ellipse at 100% 0,
+        #000 10%,
+        transparent 70%
+      );
+      mask-image: radial-gradient(ellipse at 100% 0, #000 10%, transparent 70%);
+
+      background-size: 300%, 200%;
+      background-position: 50% 50%, 50% 50%;
+
+      --white-gradient: repeating-linear-gradient(
+        100deg,
+        #fff 0%,
+        #fff 7%,
+        transparent 10%,
+        transparent 12%,
+        #fff 16%
+      );
+
+      --dark-gradient: repeating-linear-gradient(
+        100deg,
+        #000 0%,
+        #000 7%,
+        transparent 10%,
+        transparent 12%,
+        #000 16%
+      );
+
+      --aurora: repeating-linear-gradient(
+        100deg,
+        #3b82f6 10%,
+        #a5b4fc 15%,
+        #93c5fd 20%,
+        #ddd6fe 25%,
+        #60a5fa 30%
+      );
+
+      &::after {
+        content: "";
+        position: absolute;
+        background-image: var(--dark-gradient), var(--aurora);
+        background-size: 200%, 100%;
+        background-attachment: fixed;
+        mix-blend-mode: difference;
+        inset: 0;
+        animation: om-aurora 60s linear infinite;
+      }
+
+      &.version-two::after {
+        background-image: var(--white-gradient), var(--aurora);
+      }
+    }
+  }
+}
+
+@keyframes om-aurora {
+  0% {
+    content: "";
+    background-position: 50% 50%, 50% 50%;
+  }
+  100% {
+    content: "";
+    background-position: 350% 50%, 350% 50%;
+  }
+}
