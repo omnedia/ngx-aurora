@@ -74,6 +74,10 @@
       &.version-two::after {
         background-image: var(--white-gradient), var(--aurora);
       }
+
+      &.outOfView::after {
+        animation-play-state: paused;
+      }
     }
   }
 }

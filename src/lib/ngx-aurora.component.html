@@ -1,6 +1,15 @@
-<div class="om-aurora" [ngStyle]="style" [ngClass]="styleClass">
-    <div class="om-aurora-background">
-        <div class="om-aurora-lights" [class.version-two]="versionTwo"></div>
-    </div>
-    <ng-content></ng-content>
+<div
+  class="om-aurora"
+  [ngStyle]="style"
+  [ngClass]="styleClass"
+  #OmAuroraWrapper
+>
+  <div class="om-aurora-background">
+    <div
+      class="om-aurora-lights"
+      [class.version-two]="versionTwo"
+      [class.outOfView]="!isInView"
+    ></div>
+  </div>
+  <ng-content></ng-content>
 </div>
