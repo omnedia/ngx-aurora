@@ -1,5 +1,13 @@
 # ngx-aurora
 
+<a href="https://ngxui.com" target="_blank" style="display: flex;gap: .5rem;align-items: center;cursor: pointer; padding: 0 0 0 0; height: fit-content;">
+  <img src="https://ngxui.com/assets/img/ngxui-logo.png" style="width: 64px;height: 64px;">
+  <p style="font-weight: bold; padding: 0; margin: 0; font-size: 4rem">NGXUI</p>
+</a>
+
+This Library is part of the NGXUI ecosystem. <br>
+View all available components at https://ngxui.com
+
 `@omnedia/ngx-aurora` is an Angular library that creates a mesmerizing aurora background effect. This component provides an animated, gradient-based light effect with customizable inversion and two different animation styles. It's a perfect addition for enhancing the visual aesthetics of your Angular application.
 
 ## Features
@@ -21,21 +29,23 @@ npm install @omnedia/ngx-aurora
 Import the `NgxAuroraComponent` in your Angular module or component:
 
 ```typescript
-import { NgxAuroraComponent } from '@omnedia/ngx-aurora';
+import {NgxAuroraComponent} from '@omnedia/ngx-aurora';
 
 @Component({
   ...
-  imports: [
-    ...
-    NgxAuroraComponent,
-  ],
+    imports:
+[
   ...
+    NgxAuroraComponent,
+],
+...
 })
 ```
 
 Use the component in your template:
 
 ```html
+
 <om-aurora [invert]="true" [versionTwo]="false" styleClass="custom-aurora">
   <h1>Your Content Here</h1>
 </om-aurora>
@@ -49,6 +59,7 @@ Use the component in your template:
 ## API
 
 ```html
+
 <om-aurora
   [invert]="invert"
   [versionTwo]="versionTwo"
@@ -65,6 +76,7 @@ Use the component in your template:
 ## Example
 
 ```html
+
 <om-aurora [invert]="false" [versionTwo]="true" styleClass="custom-aurora-style">
   <div class="inner-content">
     <h2>Welcome to the Aurora Experience</h2>
@@ -75,6 +87,7 @@ Use the component in your template:
 This will create an aurora background with the second version of the animation and no inversion.
 
 ## Styling
+
 `.om-aurora`
 
 - This is the main container for the aurora effect. You can apply global or custom styles using the styleClass input. The .om-aurora class manages the overall background, ensuring that the effect covers the entire container.
@@ -84,10 +97,11 @@ This will create an aurora background with the second version of the animation a
 In this example, the aurora container is customized with additional padding and background color:
 
 ```html
+
 <om-aurora styleClass="custom-aurora-background">
-    <div class="inner-content">
-        <h2>Aurora Background with Custom Styling</h2>
-    </div>
+  <div class="inner-content">
+    <h2>Aurora Background with Custom Styling</h2>
+  </div>
 </om-aurora>
 ```
 
