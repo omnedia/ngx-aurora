@@ -1,5 +1,15 @@
 import {CommonModule, isPlatformBrowser} from "@angular/common";
-import {AfterViewInit, Component, ElementRef, Inject, Input, OnDestroy, PLATFORM_ID, ViewChild,} from "@angular/core";
+import {
+  AfterViewInit, ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Inject,
+  Input,
+  OnDestroy,
+  PLATFORM_ID, signal,
+  ViewChild,
+} from "@angular/core";
 
 @Component({
   selector: "om-aurora",
@@ -7,6 +17,7 @@ import {AfterViewInit, Component, ElementRef, Inject, Input, OnDestroy, PLATFORM
   imports: [CommonModule],
   templateUrl: "./ngx-aurora.component.html",
   styleUrl: "./ngx-aurora.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxAuroraComponent implements AfterViewInit, OnDestroy {
   @ViewChild("OmAuroraWrapper") auroraRef!: ElementRef<HTMLElement>;
@@ -29,10 +40,11 @@ export class NgxAuroraComponent implements AfterViewInit, OnDestroy {
 
   style: any = {};
 
-  isInView = false;
+  isInView = signal(false);
   private intersectionObserver?: IntersectionObserver;
 
   constructor(
+    private readonly cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: object
   ) {
   }
@@ -40,13 +52,7 @@ export class NgxAuroraComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.intersectionObserver = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          if (!this.isInView) {
-            this.isInView = true;
-          }
-        } else if (this.isInView) {
-          this.isInView = false;
-        }
+        this.isInView.set(entry.isIntersecting);
       });
       this.intersectionObserver.observe(this.auroraRef.nativeElement);
     }
