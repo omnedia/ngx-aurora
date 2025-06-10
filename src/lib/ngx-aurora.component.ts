@@ -1,13 +1,14 @@
 import {CommonModule, isPlatformBrowser} from "@angular/common";
 import {
-  AfterViewInit, ChangeDetectionStrategy,
-  ChangeDetectorRef,
+  AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   Inject,
   Input,
   OnDestroy,
-  PLATFORM_ID, signal,
+  PLATFORM_ID,
+  signal,
   ViewChild,
 } from "@angular/core";
 
@@ -44,7 +45,6 @@ export class NgxAuroraComponent implements AfterViewInit, OnDestroy {
   private intersectionObserver?: IntersectionObserver;
 
   constructor(
-    private readonly cdr: ChangeDetectorRef,
     @Inject(PLATFORM_ID) private platformId: object
   ) {
   }
